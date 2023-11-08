@@ -146,5 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4662144bb73e43e4599b580764efc24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 5
-  acceleration: 8000
+  carStats: {fileID: 11400000, guid: e3e15b88b05b4b14698c5caf96e96490, type: 2}
