@@ -9,6 +9,9 @@ public class CarCrashHandler : MonoBehaviour
     [SerializeField] private float collisionSpeed;
     [SerializeField] private float crashSpeed;
 
+    //SPAWNER
+    [SerializeField] WallSpawner wallSpawner;
+
     private void Awake()
     {
         rg = gameObject.GetComponent<Rigidbody>();
@@ -28,6 +31,15 @@ public class CarCrashHandler : MonoBehaviour
                 Vector3 collisionPoint = collision.contacts[0].point;
                 Instantiate(CrashParticule, collisionPoint, Quaternion.identity);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "spawnRoad")
+        {
+            wallSpawner.spawnRoad();
+            print("roadSPAWNED");
         }
     }
 }

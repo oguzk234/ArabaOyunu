@@ -15,6 +15,7 @@ public class CarController : MonoBehaviour
     Quaternion targetRotation;
     private Rigidbody _rigidbody;
 
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();

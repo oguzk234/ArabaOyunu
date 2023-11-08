@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6308220926693735319}
   - component: {fileID: 2236316781713023269}
   - component: {fileID: 4527610337330562707}
+  - component: {fileID: 592831755171636601}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -132,7 +133,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 2
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!114 &4527610337330562707
 MonoBehaviour:
@@ -147,3 +148,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carStats: {fileID: 11400000, guid: e3e15b88b05b4b14698c5caf96e96490, type: 2}
+--- !u!114 &592831755171636601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368426341679498135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49dfe0cf93900554fa71161908cb03ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CrashParticule: {fileID: 8680598818964007281, guid: dcd90c4976197424b9958a7c54b6bb8c, type: 3}
+  collisionSpeed: 0
+  crashSpeed: 50

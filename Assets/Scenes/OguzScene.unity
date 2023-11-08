@@ -406,6 +406,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+      propertyPath: wallSpawner
+      value: 
+      objectReference: {fileID: 1890915366}
+    - target: {fileID: 2236316781713023269, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2583062015797539760, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
