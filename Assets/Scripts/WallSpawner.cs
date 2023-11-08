@@ -46,20 +46,15 @@ public class WallSpawner : MonoBehaviour
             float wallPosZRandom = Random.Range(-12, 12);
             float wallPosXRandom = Random.Range(lastRoadPosX - 500, lastRoadPosX + 500);
 
-            foreach(GameObject bloc in blockList)
+            foreach (GameObject bloc in blockList)
             {
-                foreach (GameObject bloc2 in blockList)
-                {
-                    if (bloc != bloc2) // Kendi kendine uzaklýk kontrolü yapmamak için
-                    {
-                        float distance = Vector3.Distance(bloc.transform.position, bloc2.transform.position);
+                float distance = Vector3.Distance(bloc.transform.position, new Vector3(wallPosXRandom,0,wallPosZRandom));
 
-                        while (distance < 12f)
-                        {
-                            wallPosZRandom = Random.Range(-12, 12);
-                            wallPosXRandom = Random.Range(lastRoadPosX - 500, lastRoadPosX + 500);
-                        }
-                    }
+                while (Mathf.Abs(distance) < 12f)
+                {
+                    wallPosZRandom = Random.Range(-12, 12);
+                    wallPosXRandom = Random.Range(lastRoadPosX - 500, lastRoadPosX + 500);
+                    distance = Vector3.Distance(bloc.transform.position, new Vector3(wallPosXRandom, 0, wallPosZRandom));
                 }
             }
 
