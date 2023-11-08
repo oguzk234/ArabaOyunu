@@ -8,11 +8,11 @@ public class CarController : MonoBehaviour
     [SerializeField] float acceleration = 8000;
 
     Quaternion targetRotation;
-    Rigidbody rigidbody;
+    Rigidbody rb;
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -36,7 +36,7 @@ public class CarController : MonoBehaviour
     private void FixedUpdate()
     {
         float accelaritonInput = acceleration * (Input.GetMouseButton(0) ? 1 : Input.GetMouseButton(1) ? -1 : 0) * Time.deltaTime;
-        rigidbody.AddRelativeForce(Vector3.forward * accelaritonInput);
+        rb.AddRelativeForce(Vector3.forward * accelaritonInput);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
 
