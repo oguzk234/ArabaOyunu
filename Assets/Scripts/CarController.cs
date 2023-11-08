@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    [SerializeField] float turnSpeed = 5;
-    [SerializeField] float acceleration = 8000;
+    [Header ("Car Stats")]
+    [SerializeField] SOCarStats carStats;
+
+    private float _turnSpeed;
+    private float _acceleration;
+    private float _health;
+
 
     Quaternion targetRotation;
-    Rigidbody rb;
+    private Rigidbody _rigidbody;
 
-    private void Start()
+    private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();
+        _turnSpeed = carStats.turnSpeed;
+        _acceleration = carStats.acceleration;
+        _health = carStats.health;
     }
 
     private void Update()
     {
         SetRotationPoint();
     }
+
     private void SetRotationPoint()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -35,10 +44,10 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float accelaritonInput = acceleration * (Input.GetMouseButton(0) ? 1 : Input.GetMouseButton(1) ? -1 : 0) * Time.deltaTime;
-        rb.AddRelativeForce(Vector3.forward * accelaritonInput);
+        float accelaritonInput = _acceleration * (Input.GetMouseButton(0) ? 1 : Input.GetMouseButton(1) ? -1 : 0) * Time.deltaTime;
+        _rigidbody.AddRelativeForce(Vector3.forward * accelaritonInput);
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed * Time.fixedDeltaTime);
 
     }
 }
