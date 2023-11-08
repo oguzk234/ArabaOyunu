@@ -45,9 +45,7 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float accelaritonInput = _acceleration * (Input.GetMouseButton(0) ? 1 : Input.GetMouseButton(1) ? -1 : 0) * Time.deltaTime;
-        _rigidbody.AddRelativeForce(Vector3.forward * accelaritonInput);
-
+        _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed * Time.fixedDeltaTime);
 
     }
