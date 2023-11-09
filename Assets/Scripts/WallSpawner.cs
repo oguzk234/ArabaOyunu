@@ -43,16 +43,16 @@ public class WallSpawner : MonoBehaviour
         int repeatCount = 10;
         for (int i = 0; i < repeatCount; i++)
         {
-            float wallPosZRandom = Random.Range(-12, 12);
+            float wallPosZRandom = Random.Range(-17, 17);
             float wallPosXRandom = Random.Range(lastRoadPosX - 500, lastRoadPosX + 500);
 
             foreach (GameObject bloc in blockList)
             {
                 float distance = Vector3.Distance(bloc.transform.position, new Vector3(wallPosXRandom,0,wallPosZRandom));
 
-                while (Mathf.Abs(distance) < 12f)
+                while (Mathf.Abs(distance) < 35f)
                 {
-                    wallPosZRandom = Random.Range(-12, 12);
+                    wallPosZRandom = Random.Range(-17, 17);
                     wallPosXRandom = Random.Range(lastRoadPosX - 500, lastRoadPosX + 500);
                     distance = Vector3.Distance(bloc.transform.position, new Vector3(wallPosXRandom, 0, wallPosZRandom));
                 }
