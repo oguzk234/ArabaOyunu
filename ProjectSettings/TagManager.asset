@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - spawnRoad
+  - DWall
   layers:
   - Default
   - TransparentFX

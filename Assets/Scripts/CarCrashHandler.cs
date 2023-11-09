@@ -8,6 +8,7 @@ public class CarCrashHandler : MonoBehaviour
     [SerializeField] private GameObject CrashParticule;
     [SerializeField] private float collisionSpeed;
     [SerializeField] private float crashSpeed;
+    [SerializeField]Vector3 DWallCollisionBoxSize = new Vector3(2.0f, 2.0f, 2.0f);
 
     //SPAWNER
     [SerializeField] WallSpawner wallSpawner;
@@ -20,6 +21,15 @@ public class CarCrashHandler : MonoBehaviour
     private void Update()
     {
         collisionSpeed = rg.velocity.magnitude;
+
+        Collider[] colliders = Physics.OverlapBox(gameObject.transform.position, DWallCollisionBoxSize);
+        foreach (Collider collider in colliders)
+        {
+            if(collider.gameObject.tag == "DWall")
+            {
+                collider.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -41,5 +51,17 @@ public class CarCrashHandler : MonoBehaviour
             wallSpawner.spawnRoad();
             print("roadSPAWNED");
         }
+
+
+        /*  Toplu method ikisindede ayný TAG var
+        if (other.gameObject.tag == "DWall")
+        {
+            Rigidbody[] rbArray = other.GetComponentsInChildren<Rigidbody>(true);
+            foreach(Rigidbody rb in rbArray)
+            {
+                rb.isKinematic = false;
+            }
+        }
+        */
     }
 }
