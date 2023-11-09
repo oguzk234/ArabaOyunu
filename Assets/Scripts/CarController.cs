@@ -41,8 +41,8 @@ public class CarController : MonoBehaviour
             float rotationAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 
             //Rotation Control
-            if(rotationAngle > -90 && rotationAngle < 0) rotationAngle=-90;
-            if (rotationAngle > 180 || rotationAngle < -90) rotationAngle = -90;
+            if(rotationAngle > -90f && rotationAngle < 0f) rotationAngle=0f;
+            if (rotationAngle > 180f || rotationAngle < -90f) rotationAngle = 180f;
 
             targetRotation = Quaternion.Euler(0, rotationAngle, 0);
         }    
