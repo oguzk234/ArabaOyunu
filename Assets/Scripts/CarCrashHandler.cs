@@ -48,7 +48,7 @@ public class CarCrashHandler : MonoBehaviour
     {
         if (other.gameObject.tag == "spawnRoad")
         {
-            wallSpawner.spawnRoad();
+            wallSpawner.spawnRoad(wallSpawner.repeatCount);
             print("roadSPAWNED");
         }
 
