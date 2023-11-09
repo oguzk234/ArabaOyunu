@@ -39,13 +39,25 @@ public class CarController : MonoBehaviour
             Vector3 target = ray.GetPoint(distance);
             Vector3 direction = target - transform.position;
             float rotationAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+
+            //Rotation Control
+            if(rotationAngle > -90 && rotationAngle < 0) rotationAngle=-90;
+            if (rotationAngle > 180 || rotationAngle < -90) rotationAngle = -90;
+
             targetRotation = Quaternion.Euler(0, rotationAngle, 0);
         }    
     }
 
     private void FixedUpdate()
     {
-        _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * Time.deltaTime);
+        //SpeedControl
+        float speed = _rigidbody.velocity.magnitude;
+        float speedMultiplier=1;
+        if (speed > 60) speedMultiplier = 0.7f;
+        if (speed > 120) speedMultiplier = 0.5f;
+        if (speed > 160) speedMultiplier = 0.3f;
+
+        _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * Time.deltaTime * speedMultiplier);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed * Time.fixedDeltaTime);
 
     }

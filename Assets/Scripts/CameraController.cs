@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] float aheadSpeed;
     [SerializeField] float followDamping;
     [SerializeField] float cameraHeight;
+    [SerializeField] Vector3 offset;
 
     Rigidbody observeableRigidBody;
     void Start()
@@ -20,8 +21,9 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         if (observeable == null) return;
+        
         Vector3 targetPosition = observeable.position + Vector3.up * cameraHeight + observeableRigidBody.velocity * aheadSpeed;
-        transform.position = Vector3.Lerp(transform.position, targetPosition, followDamping * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position , targetPosition + offset, followDamping * Time.deltaTime);
     }
 
 }
