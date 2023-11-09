@@ -10,6 +10,7 @@ public class CarController : MonoBehaviour
     private float _turnSpeed;
     private float _acceleration;
     private float _health;
+    private float _speedMultiplier = 1f;
 
 
     Quaternion targetRotation;
@@ -26,10 +27,19 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        SetRotationPoint();
+        float rotAngle = SetRotationPoint();
+
+        //Better Lane Changing
+        float speed = _rigidbody.velocity.magnitude;
+        if (speed > 60) _speedMultiplier = 0.8f;
+        if (speed > 120) _speedMultiplier = 0.6f;
+        if (speed > 160) _speedMultiplier = 0.3f;
+        float rotMultiplier=1f;
+        if (rotAngle < 15f || rotAngle > 165f) { rotMultiplier = 2f; }
+        _speedMultiplier *= rotMultiplier;
     }
 
-    private void SetRotationPoint()
+    private float SetRotationPoint()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane plane = new Plane(Vector3.up, Vector3.zero);
@@ -45,19 +55,16 @@ public class CarController : MonoBehaviour
             if (rotationAngle > 180f || rotationAngle < -90f) rotationAngle = 180f;
 
             targetRotation = Quaternion.Euler(0, rotationAngle, 0);
-        }    
+            return rotationAngle;
+        }
+        return 90f;
     }
 
     private void FixedUpdate()
     {
         //SpeedControl
-        float speed = _rigidbody.velocity.magnitude;
-        float speedMultiplier=1;
-        if (speed > 60) speedMultiplier = 0.7f;
-        if (speed > 120) speedMultiplier = 0.5f;
-        if (speed > 160) speedMultiplier = 0.3f;
 
-        _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * Time.deltaTime * speedMultiplier);
+        _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * Time.deltaTime * _speedMultiplier);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed * Time.fixedDeltaTime);
 
     }
