@@ -19,8 +19,7 @@ public class CarController : MonoBehaviour
     private float _acceleration;
     private float _health;
     
-    //TODO başına "_" gerekiyor. Private
-    Quaternion targetRotation;
+    Quaternion _targetRotation;
     private Rigidbody _rigidbody;
     private float _time = 0f;
     private float _point = 0f;
@@ -51,7 +50,7 @@ public class CarController : MonoBehaviour
             if (rotationAngle > -90f && rotationAngle < 0f) rotationAngle = 90f;
             if (rotationAngle > 180f || rotationAngle < -90f) rotationAngle = 90f;
 
-            targetRotation = Quaternion.Euler(0, rotationAngle, 0);
+            _targetRotation = Quaternion.Euler(0, rotationAngle, 0);
             return rotationAngle;
         }
         return 90f;
@@ -72,7 +71,7 @@ public class CarController : MonoBehaviour
         //TODO Magic number
         _speedMultiplier = 1 + (-speed * 0.002f);
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, _targetRotation, _turnSpeed);
 
         //TODO Burada da  0.00001f neredeyse sıfırlıyorsun değerleri. Hem magic number, hem de o kadar düşüreceksen zaten gerek yok o sayıya
         

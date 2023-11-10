@@ -11,10 +11,10 @@ public class WallSpawner : MonoBehaviour
     [SerializeField] private float lastRoadPosX;
     [SerializeField] private float firstRoadPosX;
     [SerializeField] private float DistanceBetweenWalls;
+    [SerializeField] private float roadSize = 1000;
+    [SerializeField] private float wallPosHeightDifference;
     public int repeatCount = 10;
-    //[SerializeField] private float wallSpawnCd;
-    //[SerializeField] private float wallSpawnCdMaxDefault;
-    //[SerializeField] private float wallSpawnCdMultiplier;
+
     private void Awake()
     {
         lastRoadPosX = firstRoadPosX;
@@ -25,22 +25,10 @@ public class WallSpawner : MonoBehaviour
         //spawnRoad(repeatCount);
     }
 
-    void Update()
-    {
-
-
-        /*
-        wallSpawnCd -= 1 * Time.deltaTime;
-        if(wallSpawnCd < 0)
-        {
-            wallSpawnCd = wallSpawnCdMaxDefault * wallSpawnCdMultiplier;
-        }*/
-    }
-
     public void spawnRoad(int repeatCount)
     {
         List<GameObject> blockList = new List<GameObject>();
-        lastRoadPosX += 1000;
+        lastRoadPosX += roadSize;
         Instantiate(RoadPrefab,new Vector3(lastRoadPosX, 0, 0),Quaternion.identity);
 
         int blocNum = 1;
@@ -49,14 +37,11 @@ public class WallSpawner : MonoBehaviour
         {
             Vector3 wallPos = Vector3.zero;
 
-            float wallPosZRandom = Random.Range(-15f, 15f);
-            //float wallPosXRandom = Random.Range(lastRoadPosX - 500, lastRoadPosX + 500);
+            float wallPosZRandom = Random.Range(-wallPosHeightDifference, wallPosHeightDifference);
 
-            //TODO Magic number
-            float startPosX = lastRoadPosX - 500;
-            float repeatX = 1000 / repeatCount;
+            float startPosX = lastRoadPosX - roadSize/2;
+            float repeatX = roadSize / repeatCount;
             float repeatXupdated = blocNum * repeatX;
-
 
 
             float wallPosXRandom = Random.Range(startPosX + repeatXupdated - repeatXupdated/2,startPosX+repeatXupdated + repeatXupdated/2);
