@@ -49,7 +49,7 @@ public class WallSpawner : MonoBehaviour
         {
             Vector3 wallPos = Vector3.zero;
 
-            float wallPosZRandom = Random.Range(-13.5f, 13.5f);
+            float wallPosZRandom = Random.Range(-15f, 15f);
             //float wallPosXRandom = Random.Range(lastRoadPosX - 500, lastRoadPosX + 500);
 
             float startPosX = lastRoadPosX - 500;
