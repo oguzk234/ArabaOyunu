@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class CarController : MonoBehaviour
 {
     public Text timerText;
+    public Text pointText;
     [Header("Car Stats")]
     [SerializeField] SOCarStats carStats;
 
@@ -19,8 +20,8 @@ public class CarController : MonoBehaviour
     
     Quaternion targetRotation;
     private Rigidbody _rigidbody;
-    private float time=0f;
-
+    private float _time = 0f;
+    private float _point = 0f;
 
 
     private void Awake()
@@ -44,8 +45,8 @@ public class CarController : MonoBehaviour
             float rotationAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 
             //Rotation Control
-            if (rotationAngle > -90f && rotationAngle < 0f) rotationAngle = 0f;
-            if (rotationAngle > 180f || rotationAngle < -90f) rotationAngle = 180f;
+            if (rotationAngle > -90f && rotationAngle < 0f) rotationAngle = 90f;
+            if (rotationAngle > 180f || rotationAngle < -90f) rotationAngle = 90f;
 
             targetRotation = Quaternion.Euler(0, rotationAngle, 0);
             return rotationAngle;
@@ -74,9 +75,11 @@ public class CarController : MonoBehaviour
 
         carModel.transform.forward = -_rigidbody.velocity.normalized;
 
-        //Todo Daha iyi yapilabilir mi
-        //time += Time.deltaTime;
-        //timerText.text=time.ToString();
+        _time += Time.deltaTime;
+        timerText.text = "Timer: " + _time.ToString();
+        _point = _rigidbody.position.x;
+        pointText.text = "Point: " + _point.ToString();
+
 
     }
 }
