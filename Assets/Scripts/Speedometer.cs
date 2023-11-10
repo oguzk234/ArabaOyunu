@@ -26,6 +26,7 @@ public class Speedometer : MonoBehaviour
 
         speed /= 2f;//Gostergeyi Dengelemek icin
 
+        //TODO null check atmayalım böyle şeyler için, patlayacaksa patlasın, görelim
         if (speedLabel != null)
             speedLabel.text = ((int)speed) + " km/h";
         if (arrow != null)

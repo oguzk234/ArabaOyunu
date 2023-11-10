@@ -52,6 +52,7 @@ public class WallSpawner : MonoBehaviour
             float wallPosZRandom = Random.Range(-15f, 15f);
             //float wallPosXRandom = Random.Range(lastRoadPosX - 500, lastRoadPosX + 500);
 
+            //TODO Magic number
             float startPosX = lastRoadPosX - 500;
             float repeatX = 1000 / repeatCount;
             float repeatXupdated = blocNum * repeatX;

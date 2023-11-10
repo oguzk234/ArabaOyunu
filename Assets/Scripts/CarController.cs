@@ -6,6 +6,7 @@ public class CarController : MonoBehaviour
     public Text timerText;
     public Text pointText;
     [Header("Car Stats")]
+    //TODO class ismi CarStatsSO olsa daha iyi olur
     [SerializeField] SOCarStats carStats;
 
     [SerializeField] GameObject carModel;
@@ -18,6 +19,7 @@ public class CarController : MonoBehaviour
     private float _acceleration;
     private float _health;
     
+    //TODO başına "_" gerekiyor. Private
     Quaternion targetRotation;
     private Rigidbody _rigidbody;
     private float _time = 0f;
@@ -45,6 +47,7 @@ public class CarController : MonoBehaviour
             float rotationAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 
             //Rotation Control
+            //TODO Çok fazla  magic number, bunları bir yerde belirlesek çok güzel olur
             if (rotationAngle > -90f && rotationAngle < 0f) rotationAngle = 90f;
             if (rotationAngle > 180f || rotationAngle < -90f) rotationAngle = 90f;
 
@@ -58,6 +61,7 @@ public class CarController : MonoBehaviour
     {
         float mouseY = Input.mousePosition.y;
 
+        //TODO Magic number, bu değerleri daha sonra değiştirmeniz imkansız olacak
         Vector3 VerticalDrift = Vector3.forward * Mathf.Clamp((mouseY - Screen.height + Screen.height / 2),-100,100);
         print(VerticalDrift);
 
@@ -65,16 +69,20 @@ public class CarController : MonoBehaviour
 
         speed = _rigidbody.velocity.magnitude;
 
+        //TODO Magic number
         _speedMultiplier = 1 + (-speed * 0.002f);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed);
 
+        //TODO Burada da  0.00001f neredeyse sıfırlıyorsun değerleri. Hem magic number, hem de o kadar düşüreceksen zaten gerek yok o sayıya
+        
         _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * _speedMultiplier * Time.deltaTime);
         _rigidbody.MovePosition(_rigidbody.position + (VerticalDrift * _acceleration * 0.00001f * _speedMultiplier* AMKYATAYGECISHIZIKATSAYISI * Time.deltaTime));
 
 
         carModel.transform.forward = -_rigidbody.velocity.normalized;
 
+        //TODO UI kodu gameplay scriptinde olmayacak
         _time += Time.deltaTime;
         timerText.text = "Timer: " + _time.ToString();
         _point = _rigidbody.position.x;
