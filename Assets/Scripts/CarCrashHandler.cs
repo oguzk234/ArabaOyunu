@@ -15,6 +15,7 @@ public class CarCrashHandler : MonoBehaviour
 
     private void Awake()
     {
+        //TODO Yukarıya [RequireComponent(TypeOf(Rigidbody))] ekle
         rg = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -25,8 +26,10 @@ public class CarCrashHandler : MonoBehaviour
         Collider[] colliders = Physics.OverlapBox(gameObject.transform.position, DWallCollisionBoxSize);
         foreach (Collider collider in colliders)
         {
+            //TODO Tag kullanmıyoruz
             if(collider.gameObject.tag == "DWall")
             {
+                //TODO collider.GetComponent da yapabilirsin
                 collider.gameObject.GetComponent<Rigidbody>().isKinematic = false;
             }
         }
@@ -34,10 +37,12 @@ public class CarCrashHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //TODO if(TryGetComponent(out WallScript wallScript))
         if(collision.gameObject.GetComponent<WallScript>() != null/* || collision.gameObject.GetComponent<>() != null*/)
         {
             if(collisionSpeed > crashSpeed)
             {
+                //TODO Spawn particle adlı bir methoda taşı burayı
                 Vector3 collisionPoint = collision.contacts[0].point;
                 Instantiate(CrashParticule, collisionPoint, Quaternion.identity);
             }
@@ -46,14 +51,17 @@ public class CarCrashHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //TODO Tag yok, karşıya component koyup get component at
         if (other.gameObject.tag == "spawnRoad")
         {
+            //TODO Buradan bir şey spawnlaman doğru değil, eventleri öğrenip event gönder spawnera, buranın tek işlevi crash olması
+            //TODO Burada wallSpawner'ı yönetmemeli
             wallSpawner.spawnRoad(wallSpawner.repeatCount);
             print("roadSPAWNED");
         }
 
 
-        /*  Toplu method ikisindede ayn� TAG var
+        /*  Toplu method ikisindede aynı TAG var
         if (other.gameObject.tag == "DWall")
         {
             Rigidbody[] rbArray = other.GetComponentsInChildren<Rigidbody>(true);

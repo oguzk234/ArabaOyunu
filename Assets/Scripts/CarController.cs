@@ -6,13 +6,14 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     [Header("Car Stats")]
+    //TODO CarStatsSO daha iyi bir isimlendirme olabilirmiş CTRL+R x2 ile kolayca isim değiştirebilirsin
     [SerializeField] SOCarStats carStats;
 
     private float _turnSpeed;
     private float _acceleration;
     private float _health;
 
-    Quaternion targetRotation;
+    private Quaternion _targetRotation;
     private Rigidbody _rigidbody;
 
 
@@ -44,7 +45,7 @@ public class CarController : MonoBehaviour
             if (rotationAngle > -90f && rotationAngle < 0f) rotationAngle = 0f;
             if (rotationAngle > 180f || rotationAngle < -90f) rotationAngle = 180f;
 
-            targetRotation = Quaternion.Euler(0, rotationAngle, 0);
+            _targetRotation = Quaternion.Euler(0, rotationAngle, 0);
             return rotationAngle;
         }
         return 90f;
@@ -60,11 +61,17 @@ public class CarController : MonoBehaviour
         float _speedMultiplier = 2f;
         float speed = _rigidbody.velocity.magnitude;
 
+        //TODO Çok fazla magic number, bu sayıların bir yerde yazması gerekiyor
+        //TODO Bunları kısaltmanın en iyi yolu bir matematik formulüne indirgemek
+        //TODO _sppedMultiplier = (80 - speed) + 2 gibi
+        //TODO Bunun yerine çok özelleştirmek istiyorsanız AnimationCurve kullanın
+        //TODO orada 80 speed'de 1.7 180 ve üstünde de 1 verebilirsiniz
         if (speed > 80) _speedMultiplier = 1.7f;
         if (speed > 120) _speedMultiplier = 1.5f;
         if (speed > 180) _speedMultiplier = 1f;
 
         float rotMultiplier = 1f;
+        //TODO Süslü parantezleri aynı satıra yazmasanız güzel olur, okumayı zorlaştırıyor
         if ((rotAngle < 75f && rotAngle > 60f) || (rotAngle > 105f && rotAngle < 120f)) { rotMultiplier = 1.3f; }
         if ((rotAngle < 60f && rotAngle > 0f) || (rotAngle > 120f && rotAngle < 180f)) { rotMultiplier = 1.5f; }
 
@@ -72,7 +79,7 @@ public class CarController : MonoBehaviour
 
         _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * Time.deltaTime * _speedMultiplier);
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed * Time.fixedDeltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, _targetRotation, _turnSpeed * Time.fixedDeltaTime);
 
     }
 }

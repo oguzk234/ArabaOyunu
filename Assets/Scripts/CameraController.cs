@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //TODO Update içinde null check atmayalım olduğunca
         if (observeable == null) return;
         
         Vector3 targetPosition = observeable.position + Vector3.up * cameraHeight + observeableRigidBody.velocity * aheadSpeed;

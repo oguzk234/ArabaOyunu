@@ -65,6 +65,10 @@ public class WallSpawner : MonoBehaviour
             }
 
             int RandomChoose = Random.Range(0, 3);
+            
+            //TODO Bu objeleri bir listeye koyabilirsin
+            //TODO RandomChoice'a göre listeen o indexi seçersin
+            //TODO listenin countundan büyük olduğu durumda da hiçbir şey yapmazsın
 
             if(RandomChoose == 0 || RandomChoose == 1)
             {
