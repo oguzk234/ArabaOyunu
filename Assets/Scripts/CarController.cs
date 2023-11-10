@@ -77,7 +77,7 @@ public class CarController : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed * Time.fixedDeltaTime);
 
         carModel.transform.forward = -_rigidbody.velocity.normalized;
-        
+
         //Todo Daha iyi yapilabilir mi
         time += Time.deltaTime;
         timerText.text=time.ToString();
