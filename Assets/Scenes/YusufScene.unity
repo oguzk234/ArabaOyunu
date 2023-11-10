@@ -428,6 +428,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1579965240}
+    - target: {fileID: 8298353950280339740, guid: f91236ccf1921f44fab10eab218ac703, type: 3}
+      propertyPath: maxSpeedArrowAngle
+      value: -190
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298353950280339740, guid: f91236ccf1921f44fab10eab218ac703, type: 3}
+      propertyPath: minSpeedArrowAngle
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 9056335826598227963, guid: f91236ccf1921f44fab10eab218ac703, type: 3}
       propertyPath: m_Pivot.x
       value: 0

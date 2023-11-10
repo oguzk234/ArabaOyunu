@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 2198188511585227986}
   - component: {fileID: 2177515892829435154}
   m_Layer: 5
-  m_Name: SpeedometerAndTimerCanvas
+  m_Name: StatsCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class PauseMenu : MonoBehaviour
     public static bool isGamePaused=false;
 
     public GameObject pauseMenuUI;
-    public GameObject timerBar;
+    public GameObject StatsCanvas;
     public GameObject optionsMenu;
     private void Update()
     {
@@ -29,7 +30,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        //timerBar.SetActive(true);
+        StatsCanvas.SetActive(true);
         Time.timeScale = 1f;
         isGamePaused = false;
 
@@ -38,16 +39,18 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         pauseMenuUI.SetActive(true);
-        //timerBar.SetActive(false );
+        StatsCanvas.SetActive(false );
         Time.timeScale = 0f;
         isGamePaused = true;
     }
 
     public void Options()
     {
+        print("OptionsOnDevelopment");
+        /*
         pauseMenuUI.SetActive(false);
         optionsMenu.SetActive(true);
-        print("XXX");
+        */
     }
 
     public void LoadMenu()
