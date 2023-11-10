@@ -120,6 +120,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &344638596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3565610875844459834, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+  m_PrefabInstance: {fileID: 4598160282004571015}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &411529747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,6 +186,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4671d52d8032b24468ab98bf3ab725dc, type: 3}
+--- !u!114 &748751638 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2939502100097508009, guid: 4671d52d8032b24468ab98bf3ab725dc, type: 3}
+  m_PrefabInstance: {fileID: 411529747}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0282fd9fa304aa2488ee3e82ed8c5b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &852963723 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2268358980895706060, guid: f84270221f7417f4b899e2ea69c0d04e, type: 3}
@@ -296,6 +312,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1256307266 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1830613015407723147, guid: f91236ccf1921f44fab10eab218ac703, type: 3}
+  m_PrefabInstance: {fileID: 1007769776868751935}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &1579965240 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 2236316781713023269, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
@@ -377,6 +404,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 122104638034958700, guid: f91236ccf1921f44fab10eab218ac703, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 60f31c61547f6ca42bb8d306063acbd4, type: 3}
+    - target: {fileID: 1830613015407723147, guid: f91236ccf1921f44fab10eab218ac703, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 60f31c61547f6ca42bb8d306063acbd4, type: 3}
+    - target: {fileID: 5510239818465785706, guid: f91236ccf1921f44fab10eab218ac703, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f8b81b138d6333e44827563bb94e28c2, type: 3}
+    - target: {fileID: 5510239818973724308, guid: f91236ccf1921f44fab10eab218ac703, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 400fa347fc57e924abbda61c4fb6eb98, type: 3}
     - target: {fileID: 6676670738763058185, guid: f91236ccf1921f44fab10eab218ac703, type: 3}
       propertyPath: m_Name
       value: SpeedometerAndTimerCanvas
@@ -584,6 +627,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+      propertyPath: CamContSc
+      value: 
+      objectReference: {fileID: 748751638}
     - target: {fileID: 2583062015797539760, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -632,6 +679,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4527610337330562707, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+      propertyPath: carModel
+      value: 
+      objectReference: {fileID: 344638596}
+    - target: {fileID: 4527610337330562707, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+      propertyPath: pointText
+      value: 
+      objectReference: {fileID: 1256307266}
     - target: {fileID: 4527610337330562707, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: timerText
       value: 
