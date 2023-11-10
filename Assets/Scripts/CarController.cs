@@ -1,19 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
+    public Text timerText;
     [Header("Car Stats")]
     [SerializeField] SOCarStats carStats;
 
     private float _turnSpeed;
     private float _acceleration;
     private float _health;
-
+    
     Quaternion targetRotation;
     private Rigidbody _rigidbody;
+    private float time=0f;
 
 
     private void Awake()
@@ -73,6 +73,9 @@ public class CarController : MonoBehaviour
         _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * Time.deltaTime * _speedMultiplier);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed * Time.fixedDeltaTime);
-
+        
+        //Todo Daha iyi yapilabilir mi
+        time += Time.deltaTime;
+        timerText.text=time.ToString();
     }
 }
