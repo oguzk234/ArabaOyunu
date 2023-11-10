@@ -8,7 +8,9 @@ public class CarCrashHandler : MonoBehaviour
     [SerializeField] private GameObject CrashParticule;
     [SerializeField] private float collisionSpeed;
     [SerializeField] private float crashSpeed;
-    [SerializeField]Vector3 DWallCollisionBoxSize = new Vector3(2.0f, 2.0f, 2.0f);
+    [SerializeField] Vector3 DWallCollisionBoxSize = new Vector3(2.0f, 2.0f, 2.0f);
+    [SerializeField] private CameraController CamContSc;
+    [SerializeField] private float DWallShakeCD;
 
     //SPAWNER
     [SerializeField] WallSpawner wallSpawner;
@@ -23,7 +25,9 @@ public class CarCrashHandler : MonoBehaviour
     {
         collisionSpeed = rg.velocity.magnitude;
 
-        Collider[] colliders = Physics.OverlapBox(gameObject.transform.position, DWallCollisionBoxSize);
+        DWallShakeCD -= 1 * Time.deltaTime;
+
+        Collider[] colliders = Physics.OverlapBox(gameObject.transform.position, DWallCollisionBoxSize,Quaternion.identity,layerMask:7);
         foreach (Collider collider in colliders)
         {
             //TODO Tag kullanmıyoruz
@@ -31,8 +35,16 @@ public class CarCrashHandler : MonoBehaviour
             {
                 //TODO collider.GetComponent da yapabilirsin
                 collider.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                StartCoroutine(changePhysicsLayer(collider.gameObject, 0.5f));
+                Destroy(collider.gameObject, 9);
             }
         }
+    }
+
+    private IEnumerator changePhysicsLayer(GameObject go,float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        go.layer = 6;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -45,7 +57,14 @@ public class CarCrashHandler : MonoBehaviour
                 //TODO Spawn particle adlı bir methoda taşı burayı
                 Vector3 collisionPoint = collision.contacts[0].point;
                 Instantiate(CrashParticule, collisionPoint, Quaternion.identity);
+                StartCoroutine(CamContSc.Shake(0.7f, crashSpeed * 4));
             }
+        }
+
+        if (collision.gameObject.tag == "DWall" && DWallShakeCD < 0)
+        {
+            StartCoroutine(CamContSc.Shake(0.5f, crashSpeed * 3.2f));
+            DWallShakeCD = DWallShakeCD = 0.1f;
         }
     }
 
