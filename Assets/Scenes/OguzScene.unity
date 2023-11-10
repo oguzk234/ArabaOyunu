@@ -138,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3745057576341945548, guid: 2ca613301f6e19e4daeef1465c60f8d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.4
+      value: -13.9
       objectReference: {fileID: 0}
     - target: {fileID: 3745057576341945548, guid: 2ca613301f6e19e4daeef1465c60f8d5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -285,6 +285,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1431819456 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2939502100097508009, guid: 4671d52d8032b24468ab98bf3ab725dc, type: 3}
+  m_PrefabInstance: {fileID: 1224568093375646829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0282fd9fa304aa2488ee3e82ed8c5b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1890915365
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +345,7 @@ Transform:
   m_GameObject: {fileID: 1890915365}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 15.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -414,20 +425,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+      propertyPath: CamContSc
+      value: 
+      objectReference: {fileID: 1431819456}
+    - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: wallSpawner
       value: 
       objectReference: {fileID: 1890915366}
     - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: DWallCollisionBoxSize.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
-      propertyPath: DWallCollisionBoxSize.y
-      value: 3.1
+      value: 10.7
       objectReference: {fileID: 0}
     - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: DWallCollisionBoxSize.z
-      value: 3
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 2236316781713023269, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: m_Constraints
@@ -485,6 +496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car
       objectReference: {fileID: 0}
+    - target: {fileID: 4368426341679498135, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6308220926693735319, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: m_Size.y
       value: 1
@@ -520,7 +535,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1806171409327289678, guid: 8abf7f0415cb9a546b58a9485a91123d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 139.1
+      value: 447.1
       objectReference: {fileID: 0}
     - target: {fileID: 1806171409327289678, guid: 8abf7f0415cb9a546b58a9485a91123d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -528,7 +543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1806171409327289678, guid: 8abf7f0415cb9a546b58a9485a91123d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.7
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 1806171409327289678, guid: 8abf7f0415cb9a546b58a9485a91123d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -558,9 +573,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5068335413918025335, guid: 8abf7f0415cb9a546b58a9485a91123d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7213841392525163771, guid: 8abf7f0415cb9a546b58a9485a91123d, type: 3}
       propertyPath: m_Name
       value: DWallObj
+      objectReference: {fileID: 0}
+    - target: {fileID: 7213841392525163771, guid: 8abf7f0415cb9a546b58a9485a91123d, type: 3}
+      propertyPath: m_TagString
+      value: DWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

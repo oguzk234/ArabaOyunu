@@ -163,3 +163,6 @@ MonoBehaviour:
   CrashParticule: {fileID: 8680598818964007281, guid: dcd90c4976197424b9958a7c54b6bb8c, type: 3}
   collisionSpeed: 0
   crashSpeed: 50
+  DWallCollisionBoxSize: {x: 1.2, y: 3.1, z: 3}
+  CamContSc: {fileID: 0}
+  wallSpawner: {fileID: 0}
