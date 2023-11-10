@@ -120,6 +120,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &110281724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5545712158804346339, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+  m_PrefabInstance: {fileID: 4598160282004571015}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &360093365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -452,6 +457,10 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2236316781713023269, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 2583062015797539760, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.1
@@ -512,6 +521,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4527610337330562707, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+      propertyPath: carModel
+      value: 
+      objectReference: {fileID: 110281724}
     - target: {fileID: 6308220926693735319, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: m_Size.y
       value: 1

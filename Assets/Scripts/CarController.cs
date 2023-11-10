@@ -7,6 +7,8 @@ public class CarController : MonoBehaviour
     [Header("Car Stats")]
     [SerializeField] SOCarStats carStats;
 
+    [SerializeField] GameObject carModel;
+
     private float _turnSpeed;
     private float _acceleration;
     private float _health;
@@ -73,6 +75,8 @@ public class CarController : MonoBehaviour
         _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * Time.deltaTime * _speedMultiplier);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed * Time.fixedDeltaTime);
+
+        carModel.transform.forward = -_rigidbody.velocity.normalized;
         
         //Todo Daha iyi yapilabilir mi
         time += Time.deltaTime;
