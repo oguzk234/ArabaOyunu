@@ -37,8 +37,8 @@ public class CarCrashHandler : MonoBehaviour
 
                 if(DWallShakeCD < 0)
                 {
-                    StartCoroutine(CamContSc.Shake(0.7f, crashSpeed * 3.6f));
-                    DWallShakeCD = DWallShakeCD = 2f;
+                    StartCoroutine(CamContSc.Shake(0.5f, crashSpeed * 3.2f));
+                    DWallShakeCD = DWallShakeCD = 3f;
                 }
             }
         }

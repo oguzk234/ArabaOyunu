@@ -532,6 +532,10 @@ PrefabInstance:
       propertyPath: CrashParticule
       value: 
       objectReference: {fileID: 8680598818964007281, guid: dcd90c4976197424b9958a7c54b6bb8c, type: 3}
+    - target: {fileID: 6466404580868720384, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

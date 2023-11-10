@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Player Car
   m_EditorClassIdentifier: 
   health: 1
-  turnSpeed: 5
+  turnSpeed: 2
   acceleration: 2500
