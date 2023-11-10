@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -10,8 +11,6 @@ public class CarController : MonoBehaviour
     private float _turnSpeed;
     private float _acceleration;
     private float _health;
-    private float _speedMultiplier = 1f;
-
 
     Quaternion targetRotation;
     private Rigidbody _rigidbody;
@@ -58,14 +57,19 @@ public class CarController : MonoBehaviour
         float rotAngle = SetRotationPoint();
 
         //Better Lane Changing
+        float _speedMultiplier = 2f;
         float speed = _rigidbody.velocity.magnitude;
-        if (speed > 60) _speedMultiplier = 0.8f;
-        if (speed > 120) _speedMultiplier = 0.5f;
-        if (speed > 160) _speedMultiplier = 0.3f;
+
+        if (speed > 80) _speedMultiplier = 1.7f;
+        if (speed > 120) _speedMultiplier = 1.5f;
+        if (speed > 180) _speedMultiplier = 1f;
 
         float rotMultiplier = 1f;
-        if ((rotAngle < 75f && rotAngle > 0f) || (rotAngle > 115f && rotAngle < 180f)) { rotMultiplier = 1.3f; }
-        _speedMultiplier = _speedMultiplier * rotMultiplier;
+        if ((rotAngle < 75f && rotAngle > 60f) || (rotAngle > 105f && rotAngle < 120f)) { rotMultiplier = 1.3f; }
+        if ((rotAngle < 60f && rotAngle > 0f) || (rotAngle > 120f && rotAngle < 180f)) { rotMultiplier = 1.5f; }
+
+        _speedMultiplier *= rotMultiplier;
+
         _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * Time.deltaTime * _speedMultiplier);
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed * Time.fixedDeltaTime);
