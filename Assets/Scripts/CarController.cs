@@ -9,6 +9,10 @@ public class CarController : MonoBehaviour
 
     [SerializeField] GameObject carModel;
 
+    [SerializeField] private float _speedMultiplier = 2f;
+    [SerializeField] private float speed;
+    [SerializeField] private float AMKYATAYGECISHIZIKATSAYISI;
+
     private float _turnSpeed;
     private float _acceleration;
     private float _health;
@@ -16,6 +20,7 @@ public class CarController : MonoBehaviour
     Quaternion targetRotation;
     private Rigidbody _rigidbody;
     private float time=0f;
+
 
 
     private void Awake()
@@ -26,10 +31,6 @@ public class CarController : MonoBehaviour
         _health = carStats.health;
     }
 
-    private void Update()
-    {
-
-    }
 
     private float SetRotationPoint()
     {
@@ -54,32 +55,28 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //SpeedControl
+        float mouseY = Input.mousePosition.y;
+
+        Vector3 VerticalDrift = Vector3.forward * Mathf.Clamp((mouseY - Screen.height + Screen.height / 2),-350,350);
+        print(VerticalDrift);
 
         float rotAngle = SetRotationPoint();
 
-        //Better Lane Changing
-        float _speedMultiplier = 2f;
-        float speed = _rigidbody.velocity.magnitude;
+        speed = _rigidbody.velocity.magnitude;
 
-        if (speed > 80) _speedMultiplier = 1.7f;
-        if (speed > 120) _speedMultiplier = 1.5f;
-        if (speed > 180) _speedMultiplier = 1f;
+        _speedMultiplier = 1 + (-speed * 0.002f);
 
-        float rotMultiplier = 1f;
-        if ((rotAngle < 75f && rotAngle > 60f) || (rotAngle > 105f && rotAngle < 120f)) { rotMultiplier = 1.3f; }
-        if ((rotAngle < 60f && rotAngle > 0f) || (rotAngle > 120f && rotAngle < 180f)) { rotMultiplier = 1.5f; }
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed);
 
-        _speedMultiplier *= rotMultiplier;
+        _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * _speedMultiplier * Time.deltaTime);
+        _rigidbody.MovePosition(_rigidbody.position + (VerticalDrift * _acceleration * 0.00001f * _speedMultiplier* AMKYATAYGECISHIZIKATSAYISI * Time.deltaTime));
 
-        _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * Time.deltaTime * _speedMultiplier);
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed * Time.fixedDeltaTime);
 
         carModel.transform.forward = -_rigidbody.velocity.normalized;
 
         //Todo Daha iyi yapilabilir mi
-        time += Time.deltaTime;
-        timerText.text=time.ToString();
+        //time += Time.deltaTime;
+        //timerText.text=time.ToString();
+
     }
 }

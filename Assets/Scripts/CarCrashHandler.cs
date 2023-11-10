@@ -26,7 +26,7 @@ public class CarCrashHandler : MonoBehaviour
 
         DWallShakeCD -= 1 * Time.deltaTime;
 
-        Collider[] colliders = Physics.OverlapBox(gameObject.transform.position, DWallCollisionBoxSize);
+        Collider[] colliders = Physics.OverlapBox(gameObject.transform.position, DWallCollisionBoxSize,Quaternion.identity,layerMask:7);
         foreach (Collider collider in colliders)
         {
             if(collider.gameObject.tag == "DWall")
@@ -34,12 +34,6 @@ public class CarCrashHandler : MonoBehaviour
                 collider.gameObject.GetComponent<Rigidbody>().isKinematic = false;
                 StartCoroutine(changePhysicsLayer(collider.gameObject, 0.5f));
                 Destroy(collider.gameObject, 9);
-
-                if(DWallShakeCD < 0)
-                {
-                    StartCoroutine(CamContSc.Shake(0.5f, crashSpeed * 3.2f));
-                    DWallShakeCD = DWallShakeCD = 3f;
-                }
             }
         }
     }
@@ -60,6 +54,12 @@ public class CarCrashHandler : MonoBehaviour
                 Instantiate(CrashParticule, collisionPoint, Quaternion.identity);
                 StartCoroutine(CamContSc.Shake(0.7f, crashSpeed * 4));
             }
+        }
+
+        if (collision.gameObject.tag == "DWall" && DWallShakeCD < 0)
+        {
+            StartCoroutine(CamContSc.Shake(0.5f, crashSpeed * 3.2f));
+            DWallShakeCD = DWallShakeCD = 0.1f;
         }
     }
 

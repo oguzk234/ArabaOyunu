@@ -525,6 +525,10 @@ PrefabInstance:
       propertyPath: carModel
       value: 
       objectReference: {fileID: 110281724}
+    - target: {fileID: 4527610337330562707, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
+      propertyPath: AMKYATAYGECISHIZIKATSAYISI
+      value: 1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6308220926693735319, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: m_Size.y
       value: 1

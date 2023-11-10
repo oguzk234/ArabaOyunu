@@ -38,8 +38,8 @@ public class CameraController : MonoBehaviour
 
         while(elapsed < duration)
         {
-            float x = Random.Range(-2f, 1f) * magnitude;
-            float z = Random.Range(-1f, 1f) * magnitude;
+            float x = Random.Range(-1.3f, 1.6f) * magnitude;
+            float z = Random.Range(-1.6f, 1.6f) * magnitude;
 
             ShakeAmount = new Vector3(x, 0 ,z);
 
