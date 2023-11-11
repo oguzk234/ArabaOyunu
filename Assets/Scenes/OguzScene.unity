@@ -316,14 +316,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoadPrefab: {fileID: 419947966}
   WallPrefab: {fileID: 6048982887400399351, guid: 2ca613301f6e19e4daeef1465c60f8d5, type: 3}
-  DWallPrefab: {fileID: 8008829058784728517, guid: ca245e513245cba468fbf4c1db6605cf, type: 3}
+  DWallPrefab: {fileID: 7213841392525163771, guid: 8abf7f0415cb9a546b58a9485a91123d, type: 3}
   wallPropertyList:
   - {fileID: 11400000, guid: 604a6948b0560c44a856b0f0c0d47152, type: 2}
   - {fileID: 11400000, guid: f6fa4073e2c0ccb41a92741a21272007, type: 2}
   - {fileID: 11400000, guid: 55cff2c050e19b14a8fa181f3deaed16, type: 2}
   lastRoadPosX: 0
   firstRoadPosX: 470
-  distanceBetweenWalls: 0
+  DistanceBetweenWalls: 33
   repeatCount: 10
 --- !u!4 &1890915367
 Transform:
@@ -355,10 +355,6 @@ PrefabInstance:
     - target: {fileID: 2939502100097508009, guid: 4671d52d8032b24468ab98bf3ab725dc, type: 3}
       propertyPath: offset.x
       value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 2939502100097508009, guid: 4671d52d8032b24468ab98bf3ab725dc, type: 3}
-      propertyPath: xOffsetMax
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2939502100097508009, guid: 4671d52d8032b24468ab98bf3ab725dc, type: 3}
       propertyPath: observeable
@@ -422,22 +418,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1890915366}
     - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
-      propertyPath: CrashParticle
-      value: 
-      objectReference: {fileID: 2020661361868494885, guid: 895c6d094b6b213418cddcfb520298e9, type: 3}
-    - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
-      propertyPath: CameraControlSC
-      value: 
-      objectReference: {fileID: 1431819456}
-    - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
-      propertyPath: wallShakeAmount
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
-      propertyPath: wallShakeDuration
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: DWallCollisionBoxSize.x
       value: 1.2
       objectReference: {fileID: 0}
@@ -448,18 +428,6 @@ PrefabInstance:
     - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: DWallCollisionBoxSize.z
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
-      propertyPath: destructibleWallShakeAmount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 592831755171636601, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
-      propertyPath: destructibleWallShakeDuration
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2236316781713023269, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
-      propertyPath: m_Mass
-      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2236316781713023269, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: m_Constraints
@@ -529,11 +497,7 @@ PrefabInstance:
       objectReference: {fileID: 110281724}
     - target: {fileID: 4527610337330562707, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}
       propertyPath: AMKYATAYGECISHIZIKATSAYISI
-<<<<<<< Updated upstream
       value: 5
-=======
-      value: 0.1
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
 >>>>>>> Stashed changes
     - target: {fileID: 6308220926693735319, guid: b4360ca2ec1979a4da2671bb5674e726, type: 3}

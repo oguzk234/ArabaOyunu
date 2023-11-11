@@ -7,19 +7,14 @@ public class WallSpawner : MonoBehaviour
     [SerializeField] private GameObject RoadPrefab;
     [SerializeField] private GameObject WallPrefab;
     [SerializeField] private GameObject DWallPrefab;
-
     [SerializeField] private List<WallScriptable> wallPropertyList = new List<WallScriptable>();
-
     [SerializeField] private float lastRoadPosX;
     [SerializeField] private float firstRoadPosX;
-    [SerializeField] private float distanceBetweenWalls;
-
-    [SerializeField] private float wallHeight = 15;
-    [SerializeField] private float wallWidth = 1000;
-
+    [SerializeField] private float DistanceBetweenWalls;
     public int repeatCount = 10;
-
-
+    //[SerializeField] private float wallSpawnCd;
+    //[SerializeField] private float wallSpawnCdMaxDefault;
+    //[SerializeField] private float wallSpawnCdMultiplier;
     private void Awake()
     {
         lastRoadPosX = firstRoadPosX;
@@ -28,7 +23,6 @@ public class WallSpawner : MonoBehaviour
     private void Start()
     {
         spawnRoad(repeatCount);
-<<<<<<< Updated upstream
     }
 
     void Update()
@@ -41,14 +35,12 @@ public class WallSpawner : MonoBehaviour
         {
             wallSpawnCd = wallSpawnCdMaxDefault * wallSpawnCdMultiplier;
         }*/
-=======
->>>>>>> Stashed changes
     }
 
     public void spawnRoad(int repeatCount)
     {
         List<GameObject> blockList = new List<GameObject>();
-        lastRoadPosX += wallWidth;
+        lastRoadPosX += 1000;
         Instantiate(RoadPrefab,new Vector3(lastRoadPosX, 0, 0),Quaternion.identity);
 
         for (int i = 0; i < repeatCount; i++)
@@ -56,25 +48,7 @@ public class WallSpawner : MonoBehaviour
             float wallPosZRandom = Random.Range(-17, 17);
             float wallPosXRandom = Random.Range(lastRoadPosX - 500, lastRoadPosX + 500);
 
-<<<<<<< Updated upstream
             foreach (GameObject bloc in blockList)
-=======
-            float wallPosZRandom = Random.Range(-wallHeight, wallHeight);
-
-            float startPosX = lastRoadPosX - wallWidth/2;
-            float repeatX = wallWidth / repeatCount;
-            float repeatXupdated = blocNum * repeatX;
-
-
-
-            float wallPosXRandom = Random.Range(startPosX + repeatXupdated - repeatXupdated/2,startPosX+repeatXupdated + repeatXupdated/2);
-
-            wallPos = new Vector3(wallPosXRandom, 0, wallPosZRandom);
-
-            blocNum++;
-
-            if(blocNum >= repeatCount)
->>>>>>> Stashed changes
             {
                 float distance = Vector3.Distance(bloc.transform.position, new Vector3(wallPosXRandom,0,wallPosZRandom));
 
@@ -103,13 +77,7 @@ public class WallSpawner : MonoBehaviour
             else
             {
                 GameObject block = Instantiate(DWallPrefab);
-<<<<<<< Updated upstream
                 block.transform.position = new Vector3(wallPosXRandom, 0, wallPosZRandom);
-=======
-                int randomWallNo = Random.Range(0, wallPropertyList.Count); //
-                block.GetComponent<WallScript>().WallScr = wallPropertyList[randomWallNo]; //
-                block.transform.position = wallPos;
->>>>>>> Stashed changes
                 blockList.Add(block);
             }
 
