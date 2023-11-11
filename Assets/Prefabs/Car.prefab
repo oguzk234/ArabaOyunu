@@ -169,6 +169,8 @@ MonoBehaviour:
   CrashParticle: {fileID: 0}
   carSpeed: 0
   crashSpeed: 50
+<<<<<<< Updated upstream
+=======
   DestructibleWallCollisionBoxSize: {x: 2, y: 2, z: 2}
   CameraControlSC: {fileID: 0}
   DestructibleWallShakeCooldown: 0
@@ -256,3 +258,4 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+>>>>>>> Stashed changes
