@@ -10,6 +10,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] float cameraHeight;
     [SerializeField] Vector3 offset;
 
+<<<<<<< Updated upstream
+=======
     [Header("CameraShakeOffsets")]
     [SerializeField] float xOffsetMin = -1.2f;
     [SerializeField] float xOffsetMax = 1.54f;
@@ -19,6 +21,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] Vector3 ShakeAmount;
 
+>>>>>>> Stashed changes
     Rigidbody observeableRigidBody;
     void Start()
     {
@@ -35,6 +38,8 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position , targetPosition + offset, followDamping * Time.deltaTime);
     }
 
+<<<<<<< Updated upstream
+=======
     public IEnumerator Shake(float duration, float magnitude)
     {
 
@@ -54,4 +59,5 @@ public class CameraController : MonoBehaviour
 
         ShakeAmount = Vector3.zero;
     }
+>>>>>>> Stashed changes
 }
