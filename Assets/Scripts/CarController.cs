@@ -59,7 +59,7 @@ public class CarController : MonoBehaviour
         float mouseY = Input.mousePosition.y;
 
         Vector3 VerticalDrift = Vector3.forward * Mathf.Clamp((mouseY - Screen.height + Screen.height / 2),-100,100);
-        print(VerticalDrift);
+        //print(VerticalDrift);
 
         float rotAngle = SetRotationPoint();
 

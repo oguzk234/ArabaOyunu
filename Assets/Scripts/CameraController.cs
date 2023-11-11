@@ -10,6 +10,10 @@ public class CameraController : MonoBehaviour
     [SerializeField] float cameraHeight;
     [SerializeField] Vector3 targetPosition;
     [SerializeField] Vector3 offset;
+    [SerializeField] private float camShakeXMin = 1.3f;
+    [SerializeField] private float camShakeXMax = 1.6f;
+    [SerializeField] private float camShakeZMin = 1.6f;
+    [SerializeField] private float camShakeZMax = 1.6f;
 
 
     [SerializeField] Vector3 ShakeAmount;
@@ -38,8 +42,8 @@ public class CameraController : MonoBehaviour
 
         while(elapsed < duration)
         {
-            float x = Random.Range(-1.3f, 1.6f) * magnitude;
-            float z = Random.Range(-1.6f, 1.6f) * magnitude;
+            float x = Random.Range(-camShakeXMin, camShakeXMax) * magnitude;
+            float z = Random.Range(-camShakeZMin, camShakeZMax) * magnitude;
 
             ShakeAmount = new Vector3(x, 0 ,z);
 

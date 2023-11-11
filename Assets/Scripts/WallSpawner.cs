@@ -12,9 +12,8 @@ public class WallSpawner : MonoBehaviour
     [SerializeField] private float firstRoadPosX;
     [SerializeField] private float DistanceBetweenWalls;
     public int repeatCount = 10;
-    //[SerializeField] private float wallSpawnCd;
-    //[SerializeField] private float wallSpawnCdMaxDefault;
-    //[SerializeField] private float wallSpawnCdMultiplier;
+    [SerializeField] private float roadHeight = 15;
+    [SerializeField] private float roadWidth = 1000;
     private void Awake()
     {
         lastRoadPosX = firstRoadPosX;
@@ -25,22 +24,9 @@ public class WallSpawner : MonoBehaviour
         //spawnRoad(repeatCount);
     }
 
-    void Update()
-    {
-
-
-        /*
-        wallSpawnCd -= 1 * Time.deltaTime;
-        if(wallSpawnCd < 0)
-        {
-            wallSpawnCd = wallSpawnCdMaxDefault * wallSpawnCdMultiplier;
-        }*/
-    }
-
     public void spawnRoad(int repeatCount)
     {
-        List<GameObject> blockList = new List<GameObject>();
-        lastRoadPosX += 1000;
+        lastRoadPosX += roadWidth;
         Instantiate(RoadPrefab,new Vector3(lastRoadPosX, 0, 0),Quaternion.identity);
 
         int blocNum = 1;
@@ -49,11 +35,11 @@ public class WallSpawner : MonoBehaviour
         {
             Vector3 wallPos = Vector3.zero;
 
-            float wallPosZRandom = Random.Range(-15f, 15f);
+            float wallPosZRandom = Random.Range(-roadHeight, roadHeight);
             //float wallPosXRandom = Random.Range(lastRoadPosX - 500, lastRoadPosX + 500);
 
-            float startPosX = lastRoadPosX - 500;
-            float repeatX = 1000 / repeatCount;
+            float startPosX = lastRoadPosX - roadWidth/2;
+            float repeatX = roadWidth / repeatCount;
             float repeatXupdated = blocNum * repeatX;
 
 
@@ -79,13 +65,13 @@ public class WallSpawner : MonoBehaviour
                 int randomWallNo = Random.Range(0, wallPropertyList.Count);
                 block.GetComponent<WallScript>().WallScr = wallPropertyList[randomWallNo];
                 block.transform.position = wallPos;
-                blockList.Add(block);
             }
             else
             {
                 GameObject block = Instantiate(DWallPrefab);
+                int randomWallNo = Random.Range(0, wallPropertyList.Count);
+                block.GetComponent<WallScript>().WallScr = wallPropertyList[randomWallNo];
                 block.transform.position = wallPos;
-                blockList.Add(block);
             }
         }
     }
