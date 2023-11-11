@@ -4,15 +4,8 @@ using UnityEngine.UI;
 public class CarController : MonoBehaviour
 {
     public Text timerText;
-    public Text pointText;
     [Header("Car Stats")]
     [SerializeField] SOCarStats carStats;
-
-    [SerializeField] GameObject carModel;
-
-    [SerializeField] private float _speedMultiplier = 2f;
-    [SerializeField] private float speed;
-    [SerializeField] private float AMKYATAYGECISHIZIKATSAYISI;
 
     private float _turnSpeed;
     private float _acceleration;
@@ -20,8 +13,7 @@ public class CarController : MonoBehaviour
     
     Quaternion targetRotation;
     private Rigidbody _rigidbody;
-    private float _time = 0f;
-    private float _point = 0f;
+    private float time=0f;
 
 
     private void Awake()
@@ -32,6 +24,10 @@ public class CarController : MonoBehaviour
         _health = carStats.health;
     }
 
+    private void Update()
+    {
+
+    }
 
     private float SetRotationPoint()
     {
@@ -45,8 +41,8 @@ public class CarController : MonoBehaviour
             float rotationAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 
             //Rotation Control
-            if (rotationAngle > -90f && rotationAngle < 0f) rotationAngle = 90f;
-            if (rotationAngle > 180f || rotationAngle < -90f) rotationAngle = 90f;
+            if (rotationAngle > -90f && rotationAngle < 0f) rotationAngle = 0f;
+            if (rotationAngle > 180f || rotationAngle < -90f) rotationAngle = 180f;
 
             targetRotation = Quaternion.Euler(0, rotationAngle, 0);
             return rotationAngle;
@@ -56,30 +52,45 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float mouseY = Input.mousePosition.y;
-
-        Vector3 VerticalDrift = Vector3.forward * Mathf.Clamp((mouseY - Screen.height + Screen.height / 2),-100,100);
-        print(VerticalDrift);
+        //SpeedControl
 
         float rotAngle = SetRotationPoint();
 
-        speed = _rigidbody.velocity.magnitude;
+        //Better Lane Changing
+        float _speedMultiplier = 2f;
+        float speed = _rigidbody.velocity.magnitude;
 
-        _speedMultiplier = 1 + (-speed * 0.002f);
+        if (speed > 80) _speedMultiplier = 1.7f;
+        if (speed > 120) _speedMultiplier = 1.5f;
+        if (speed > 180) _speedMultiplier = 1f;
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed);
+        float rotMultiplier = 1f;
+        if ((rotAngle < 75f && rotAngle > 60f) || (rotAngle > 105f && rotAngle < 120f)) { rotMultiplier = 1.3f; }
+        if ((rotAngle < 60f && rotAngle > 0f) || (rotAngle > 120f && rotAngle < 180f)) { rotMultiplier = 1.5f; }
 
+<<<<<<< Updated upstream
+        _speedMultiplier *= rotMultiplier;
+
+        _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * Time.deltaTime * _speedMultiplier);
+=======
         _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * _speedMultiplier * Time.deltaTime);
         _rigidbody.MovePosition(_rigidbody.position + (VerticalDrift * _acceleration * 0.00001f * _speedMultiplier* AMKYATAYGECISHIZIKATSAYISI * Time.deltaTime));
 
 
         carModel.transform.forward = -_rigidbody.velocity.normalized;
 
+        /*
         _time += Time.deltaTime;
         timerText.text = "Timer: " + _time.ToString();
         _point = _rigidbody.position.x;
         pointText.text = "Point: " + _point.ToString();
+        */
+>>>>>>> Stashed changes
 
-
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed * Time.fixedDeltaTime);
+        
+        //Todo Daha iyi yapilabilir mi
+        time += Time.deltaTime;
+        timerText.text=time.ToString();
     }
 }

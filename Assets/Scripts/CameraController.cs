@@ -8,8 +8,13 @@ public class CameraController : MonoBehaviour
     [SerializeField] float aheadSpeed;
     [SerializeField] float followDamping;
     [SerializeField] float cameraHeight;
-    [SerializeField] Vector3 targetPosition;
     [SerializeField] Vector3 offset;
+
+    [Header("CameraShakeOffsets")]
+    [SerializeField] float xOffsetMin = -1.2f;
+    [SerializeField] float xOffsetMax = 1.54f;
+    [SerializeField] float yOffsetMin = -1.6f;
+    [SerializeField] float yOffsetMax = 1.6f;
 
 
     [SerializeField] Vector3 ShakeAmount;
@@ -18,7 +23,6 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         observeableRigidBody=observeable.GetComponent<Rigidbody>();
-        //ShakeAmount = new Vector3(0, 0, 30);
 
     }
 
@@ -27,8 +31,8 @@ public class CameraController : MonoBehaviour
     {
         if (observeable == null) return;
         
-        targetPosition = observeable.position + Vector3.up * cameraHeight + observeableRigidBody.velocity * aheadSpeed;
-        transform.position = Vector3.Lerp(transform.position , targetPosition + offset + ShakeAmount, followDamping * Time.deltaTime);
+        Vector3 targetPosition = observeable.position + Vector3.up * cameraHeight + observeableRigidBody.velocity * aheadSpeed;
+        transform.position = Vector3.Lerp(transform.position , targetPosition + offset, followDamping * Time.deltaTime);
     }
 
     public IEnumerator Shake(float duration, float magnitude)
@@ -38,8 +42,8 @@ public class CameraController : MonoBehaviour
 
         while(elapsed < duration)
         {
-            float x = Random.Range(-1.3f, 1.6f) * magnitude;
-            float z = Random.Range(-1.6f, 1.6f) * magnitude;
+            float x = Random.Range(xOffsetMin, xOffsetMax) * magnitude;
+            float z = Random.Range(yOffsetMin, yOffsetMax) * magnitude;
 
             ShakeAmount = new Vector3(x, 0 ,z);
 
