@@ -68,9 +68,24 @@ public class CarController : MonoBehaviour
         if ((rotAngle < 75f && rotAngle > 60f) || (rotAngle > 105f && rotAngle < 120f)) { rotMultiplier = 1.3f; }
         if ((rotAngle < 60f && rotAngle > 0f) || (rotAngle > 120f && rotAngle < 180f)) { rotMultiplier = 1.5f; }
 
+<<<<<<< Updated upstream
         _speedMultiplier *= rotMultiplier;
 
         _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * Time.deltaTime * _speedMultiplier);
+=======
+        _rigidbody.AddRelativeForce(Vector3.forward * _acceleration * _speedMultiplier * Time.deltaTime);
+        _rigidbody.MovePosition(_rigidbody.position + (VerticalDrift * _acceleration * 0.00001f * _speedMultiplier* AMKYATAYGECISHIZIKATSAYISI * Time.deltaTime));
+
+
+        carModel.transform.forward = -_rigidbody.velocity.normalized;
+
+        /*
+        _time += Time.deltaTime;
+        timerText.text = "Timer: " + _time.ToString();
+        _point = _rigidbody.position.x;
+        pointText.text = "Point: " + _point.ToString();
+        */
+>>>>>>> Stashed changes
 
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, _turnSpeed * Time.fixedDeltaTime);
         
