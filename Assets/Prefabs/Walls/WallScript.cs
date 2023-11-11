@@ -6,7 +6,7 @@ public class WallScript : MonoBehaviour
 {
     public WallScriptable WallScr;
 
-    public virtual void Start()
+    private void Start()
     {
         gameObject.name = WallScr.WallName;
         gameObject.transform.localScale = new Vector3(WallScr.ScaleX, WallScr.ScaleY, WallScr.ScaleZ);
