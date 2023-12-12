@@ -14,6 +14,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float camShakeXMax = 1.6f;
     [SerializeField] private float camShakeZMin = 1.6f;
     [SerializeField] private float camShakeZMax = 1.6f;
+    [SerializeField] private float camZFollowLimit = 3f;
 
 
     [SerializeField] Vector3 ShakeAmount;
@@ -32,6 +33,7 @@ public class CameraController : MonoBehaviour
         if (observeable == null) return;
         
         targetPosition = observeable.position + Vector3.up * cameraHeight + observeableRigidBody.velocity * aheadSpeed;
+        targetPosition = new Vector3(targetPosition.x, targetPosition.y, Mathf.Clamp(targetPosition.y, -camZFollowLimit, camZFollowLimit)); ////
         transform.position = Vector3.Lerp(transform.position , targetPosition + offset + ShakeAmount, followDamping * Time.deltaTime);
     }
 

@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 6534540971613074192}
-  timerBar: {fileID: 0}
+  StatsCanvas: {fileID: 0}
   optionsMenu: {fileID: 0}
 --- !u!1 &4758484838464573957
 GameObject:

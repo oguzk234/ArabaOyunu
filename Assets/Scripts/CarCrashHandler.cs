@@ -44,7 +44,7 @@ public class CarCrashHandler : MonoBehaviour
     {
         if (other.gameObject.tag == "spawnRoad")
         {
-            wallSpawner.spawnRoad(wallSpawner.repeatCount);
+            wallSpawner.spawnRoad();
             print("roadSPAWNED");
         }
 
@@ -57,7 +57,7 @@ public class CarCrashHandler : MonoBehaviour
         if (other.gameObject.tag == "DWallCrash" && DWallShakeCD < 0)
         {
             StartCoroutine(CamContSc.Shake(0.5f, crashSpeed * 3.2f));
-            DWallShakeCD = DWallShakeCD = 0.2f;
+            DWallShakeCD = DWallShakeCD = 0.5f;
             print("SALLANDI");
         }
     }
